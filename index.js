@@ -40,22 +40,6 @@ mongoose
     console.log(err);
   });
 
-// app.get("/api/order/:id", async (req, res) => {
-//   const orderId = req.params.id;
-//   try {
-//     const [result] = await conn.query(
-//       "SELECT * from orders where order_id = ?",
-//       orderId
-//     );
-//     const selectedOrder = result[0];
-//     if (!selectedOrder) {
-//       throw {
-//         errorMessage: "Order not found",
-//       };
-//     }
-//     res.json(selectedOrder);
-//   } catch (error) {
-//     console.log("error", error);
-//     res.status(404).json({ error: error.errorMessage || "System error" });
-//   }
-// });
+app.get("/", async (req, res) => {
+  res.send("hello this is payment api for meet me");
+});

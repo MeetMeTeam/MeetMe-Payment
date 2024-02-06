@@ -34,6 +34,7 @@ const CheckOut = async (req, res) => {
       session_id: session.id,
       status: session.status,
       order_id: orderId,
+      url: session.url,
     };
     const newOrder = new Order(orderData);
     newOrder
@@ -111,7 +112,23 @@ const Webhook = async (req, res) => {
 
   res.send();
 };
+
+const getHistory = async (req, res) => {
+  const { userId } = req.body;
+  try {
+    const order = await Order.find({ user_id: userId });
+    if (order.length > 0) {
+      res.status(200).json({ data: order });
+    } else {
+      res.status(400).json({ status: 400, error: "not found" });
+    }
+  } catch (err) {
+    res.status(400).json({ status: 400, error: "Error payment" });
+  }
+};
+
 module.exports = {
   CheckOut,
   Webhook,
+  getHistory,
 };
