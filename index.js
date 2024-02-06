@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const http = require("http");
 const PaymentRoutes = require("./Routes/Payment");
 const dotenv = require("dotenv");
+const verifyToken = require("./middleware/auth"); // Adjust the path accordingly
+
 dotenv.config();
 require("dotenv").config();
 
@@ -19,7 +21,7 @@ const endpointSecret = process.env.END_POINT_SECRET;
 
 // Middlewares here
 app.use(cors());
-app.use("/api/payment", PaymentRoutes);
+app.use("/api/payment", verifyToken, PaymentRoutes);
 // register the routes
 
 let conn = null;
