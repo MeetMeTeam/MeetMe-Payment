@@ -32,7 +32,7 @@ let conn = null;
 
 mongoose
   .connect(process.env.MONGO_URL, {
-    dbName: "Dev-MeetMe",
+    dbName: process.env.DATABASE_NAME,
   })
   .then(() => {
     app.listen(port, () => {
