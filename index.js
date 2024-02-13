@@ -24,7 +24,7 @@ const endpointSecret = process.env.END_POINT_SECRET;
 // Middlewares here
 app.use(cors());
 app.use("/api/payment", verifyToken, PaymentRoutes);
-app.use("/api/webhook", WebhookRoutes);
+app.use("/api/payment/webhook", WebhookRoutes);
 
 // register the routes
 
