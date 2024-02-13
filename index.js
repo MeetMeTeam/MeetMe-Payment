@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const http = require("http");
 const PaymentRoutes = require("./Routes/Payment");
+const WebhookRoutes = require("./Routes/Webhook");
+
 const dotenv = require("dotenv");
 const verifyToken = require("./middleware/auth"); // Adjust the path accordingly
 
@@ -22,6 +24,8 @@ const endpointSecret = process.env.END_POINT_SECRET;
 // Middlewares here
 app.use(cors());
 app.use("/api/payment", verifyToken, PaymentRoutes);
+app.use("/api/webhook", WebhookRoutes);
+
 // register the routes
 
 let conn = null;

@@ -40,7 +40,6 @@ const CheckOut = async (req, res) => {
     newOrder
       .save()
       .then((savedOrder) => {
-        console.log("Order saved:", session);
         res.json({
           message: "Checkout success.",
           id: session.id,
