@@ -10,14 +10,14 @@ const verifyToken = (req, res, next) => {
   if (!token) {
     return res
       .status(403)
-      .json({ status: 403, error: "A token is required for authentication" });
+      .json({ message: "A token is required for authentication" });
   }
   try {
     token = token.replace(/^Bearer\s+/, "");
     const decoded = jwt.verify(token, process.env.TOKEN_KEY);
     req.user = decoded;
   } catch (err) {
-    return res.status(401).json({ status: 401, error: "Invalid Token" });
+    return res.status(401).json({ message: "Invalid Token" });
   }
 
   return next();
