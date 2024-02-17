@@ -3,7 +3,7 @@ const router = Router();
 const express = require("express");
 const Order = require("../Models/Order");
 const User = require("../Models/User");
-
+const calFlower = require("../util/calFlower");
 const { v4: uuidv4 } = require("uuid");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -49,14 +49,36 @@ router.post(
           const userId = order.user_id.toString();
           const user = await User.findOne({ _id: userId });
           console.log("User updated successfully:", user.coin);
+          console.log(data.coin);
           let update = await User.findOneAndUpdate(
             { _id: userId },
-            { coin: user.coin + data.coin }
+            { coin: user.coin + calFlower(data.coin) }
           );
         } catch (error) {
           console.error(error);
         }
 
+        break;
+
+      case "checkout.session.async_payment_failed":
+        const checkoutSessionAsyncPaymentFailed = event.data.object;
+        console.log(checkoutSessionAsyncPaymentFailed);
+        // Then define and call a function to handle the event checkout.session.async_payment_failed
+        break;
+      case "checkout.session.async_payment_succeeded":
+        const checkoutSessionAsyncPaymentSucceeded = event.data.object;
+        console.log(checkoutSessionAsyncPaymentSucceeded);
+        // Then define and call a function to handle the event checkout.session.async_payment_succeeded
+        break;
+      case "checkout.session.completed":
+        const checkoutSessionCompleted = event.data.object;
+        console.log(checkoutSessionCompleted);
+        // Then define and call a function to handle the event checkout.session.completed
+        break;
+      case "checkout.session.expired":
+        const checkoutSessionExpired = event.data.object;
+        // Then define and call a function to handle the event checkout.session.expired
+        console.log(checkoutSessionExpired);
         break;
       default:
         console.log(`Unhandled event type ${event.type}`);
