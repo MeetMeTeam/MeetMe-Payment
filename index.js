@@ -37,6 +37,7 @@ mongoose
   .then(() => {
     app.listen(port, () => {
       console.log(`server is listening on ${port}`);
+      console.log(`database name ${process.env.DATABASE_NAME}`);
     });
   })
   .catch((err) => {
