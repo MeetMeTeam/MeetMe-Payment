@@ -45,5 +45,7 @@ mongoose
   });
 
 app.get("/", async (req, res) => {
-  res.send("hello this is payment api for meet me");
+  res.send(
+    `hello this is payment api for meet me use database ${process.env.DATABASE_NAME}`
+  );
 });
