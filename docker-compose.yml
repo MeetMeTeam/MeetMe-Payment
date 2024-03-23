@@ -2,20 +2,20 @@ version: "3.9"
 
 services:
   payment:
+      image: winnerkypt/meetme-payment:latest
       container_name: payment-docker
-      build: .
       volumes:
         - '.././MeetMe-Payment/:/usr/src/app'
       networks:  
         - meetme
       environment:
-        STRIPE_PUBLISHABLE_KEY: pk_test_51OZ8JFIHDBIOztVfH2rP2fbiZtkGvMdRDVw87pACHa7G1XMjlGLo9jgizo6YWWOlrTt4EhZYbtJI06LEdckcV2BW00x39Ke4Ee
-        STRIPE_SECRET_KEY: sk_test_51OZ8JFIHDBIOztVfMVIJDsZ7Ese8RNZsiSBJHYHjzFDEql8467jYJtNuDLBhHY47PSOjiyJgsPVPVIFghUKBf0SF008yxOspCa
-        MONGO_URL: mongodb+srv://MeetMe2:Ntw171044.@cluster0.salidj6.mongodb.net/?retryWrites=true&w=majority
-        URL_WEB: https://dev-meetme.com
-        TOKEN_KEY: H3LloM3ETm33wINneR003Nut069bEWo72
-        END_POINT_SECRET: whsec_q14rvPt2NbO3oinTTdwL0TvGiLiqbqgr
-        DATABASE_NAME: Dev-MeetMe
+        STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
+        STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+        MONGO_URL: ${MONGO_URL}
+        URL_WEB: ${URL_WEB}
+        TOKEN_KEY: ${TOKEN_KEY}
+        END_POINT_SECRET: ${END_POINT_SECRET}
+        DATABASE_NAME: ${DATABASE_NAME}
 networks:
   meetme:  
     external: true
