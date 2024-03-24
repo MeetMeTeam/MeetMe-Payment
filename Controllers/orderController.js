@@ -12,7 +12,9 @@ const CheckOut = async (req, res) => {
     res.status(400).json({ message: "need user and product data" });
   } else {
     try {
+      console.log(user);
       const order = await User.find({ _id: user.userId });
+      console.log(order);
       if (order.length > 0) {
         try {
           // create payment session

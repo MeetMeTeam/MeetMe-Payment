@@ -7,9 +7,10 @@ const mongoose = require("mongoose");
 const http = require("http");
 const PaymentRoutes = require("./Routes/Payment");
 const WebhookRoutes = require("./Routes/Webhook");
+const verifyToken = require("./middleware/auth"); // Adjust the path accordingly
+const GiftRoutes = require("./Routes/Gift");
 
 const dotenv = require("dotenv");
-const verifyToken = require("./middleware/auth"); // Adjust the path accordingly
 
 dotenv.config();
 require("dotenv").config();
@@ -25,6 +26,7 @@ const endpointSecret = process.env.END_POINT_SECRET;
 app.use(cors());
 app.use("/api/payment/webhook", WebhookRoutes);
 app.use("/api/payment", verifyToken, PaymentRoutes);
+app.use("/api/gift", verifyToken, GiftRoutes);
 
 // register the routes
 
