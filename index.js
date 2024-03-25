@@ -47,8 +47,16 @@ mongoose
     console.log(err);
   });
 
+
 app.get("/", async (req, res) => {
   res.send(
     `hello this is payment api for meet me use database ${process.env.DATABASE_NAME}`
+  );
+});
+
+
+app.get("/eiei", async (req, res) => {
+  res.send(
+    `eiei`
   );
 });
