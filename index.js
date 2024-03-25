@@ -40,7 +40,6 @@ mongoose
     app.listen(port, () => {
       console.log(`server is listening on ${port}`);
       console.log(`database name ${process.env.DATABASE_NAME}`);
-      console.log('testttttt')
     });
   })
   .catch((err) => {
@@ -55,9 +54,3 @@ app.get("/", async (req, res) => {
   );
 });
 
-
-app.get("/api/eiei", async (req, res) => {
-  res.send(
-    `eieiei`
-  );
-});
