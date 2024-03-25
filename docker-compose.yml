@@ -2,8 +2,7 @@ version: "3.9"
 
 services:
   payment:
-      # image: winnerkypt/meetme-payment:latest
-      build: .
+      image: winnerkypt/meetme-payment:latest
       container_name: payment-docker
       networks:  
         - meetme
