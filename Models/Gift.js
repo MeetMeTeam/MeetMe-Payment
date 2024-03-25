@@ -11,7 +11,7 @@ const GiftSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "gift_list",
     required: true,
-    unique: true,
+    unique: false,
   },
   amount: {
     type: Number,
