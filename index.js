@@ -55,7 +55,7 @@ app.get("/", async (req, res) => {
 });
 
 
-app.get("/eiei", async (req, res) => {
+app.get("/api/eiei", async (req, res) => {
   res.send(
     `eiei`
   );
